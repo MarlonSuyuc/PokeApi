@@ -1,4 +1,4 @@
-import "./PokemonModal.css";
+import "./pokemonModal.css";
 const handleModalContainerClick = (e) => e.stopPropagation();
 
 const PokemonModal = ({ children, isOpen, closeModal }) => {

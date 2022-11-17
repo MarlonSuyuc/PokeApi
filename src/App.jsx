@@ -57,7 +57,7 @@ function App() {
               prevUrl={prevUrl}
             />
           </div>
-          <div className="w-11/12 ml-auto mr-auto pt-2  pb-10  grid gap-4 justify-items-center grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <div className="w-11/12 ml-auto mr-auto pt-2  pb-10  grid gap-4 justify-items-center items-center grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {loading ? (
               <Loader />
             ) : (

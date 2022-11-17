@@ -7,63 +7,62 @@ const Pokemon = ({ id, name, type, image, stats }) => {
   let color;
   switch (type) {
     case "bug":
-      color = "lime-400";
+      color = "bg-lime-400";
       break;
     case "water":
-      color = "blue-400";
+      color = "bg-blue-400";
       break;
     case "grass":
-      color = "green-400";
+      color = "bg-green-400";
       break;
     case "fire":
-      color = "red-500";
+      color = "bg-red-500";
       break;
     case "normal":
-      color = "gray-600";
+      color = "bg-gray-600";
       break;
     case "fighting":
-      color = "red-700";
+      color = "bg-red-700";
       break;
     case "rock":
-      color = "yellow-600";
+      color = "bg-yellow-600";
       break;
     case "steel":
-      color = "indigo-300";
+      color = "bg-indigo-300";
       break;
     case "electric":
-      color = "yellow-400";
+      color = "bg-yellow-400";
       break;
     case "flying":
-      color = "violet-400";
+      color = "bg-violet-400";
       break;
     case "psychic":
-      color = "rose-400";
+      color = "bg-rose-400";
       break;
-
     case "dragon":
-      color = "violet-600";
+      color = "bg-violet-600";
       break;
     case "ice":
-      color = "cyan-300";
+      color = "bg-cyan-300";
       break;
     case "poison":
-      color = "fuchsia-700";
+      color = "bg-fuchsia-700";
       break;
     case "dark":
-      color = "yellow-800";
+      color = "bg-yellow-800";
       break;
     case "ghost":
-      color = "indigo-600";
+      color = "bg-indigo-600";
       break;
     case "fairy":
-      color = "pink-300";
+      color = "bg-pink-300";
       break;
   }
 
   return (
-    <section>
+    <div className="w-full flex justify-center">
       <article
-        className={`${type} bg-${color} border border-solid border-black p-3 rounded flex flex-col-reverse justify-between items-center  shadow-sm `}
+        className={`${type} ${color} border border-solid border-black p-3 rounded flex flex-col-reverse justify-between items-center  shadow-sm min-w-6/10 max-w-3/10`}
       >
         <p className="text-center text-xl font-semibold">
           {id} {name}
@@ -93,7 +92,7 @@ const Pokemon = ({ id, name, type, image, stats }) => {
           </ul>
         ))}
       </PokemonModal>
-    </section>
+    </div>
   );
 };
 
