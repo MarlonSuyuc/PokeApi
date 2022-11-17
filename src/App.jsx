@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Buttons from "./components/Buttons";
 import Loader from "./components/Loader";
 import Pokemon from "./components/Pokemon";
@@ -5,13 +6,30 @@ import { usePokeApi } from "./hooks/usePokeApi";
 
 function App() {
   let { prevUrl, pokemons, loading, handleNext, handlePrev } = usePokeApi();
+  const [serch, setSerch] = useState("");
+  const [data, setData] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let ulrSerchPokemon = `https://pokeapi.co/api/v2/pokemon/${serch}`;
+    const singlePokemon = async (url) => {
+      let response = await fetch(url),
+        json = await response.json();
+      const POKEMON = {
+        id: json.id,
+        name: json.name,
+        image: json.sprites.other.dream_world.front_default,
+        type: json.types[0].type.name,
+        stats: json.stats,
+      };
+      setData([POKEMON]);
+    };
+    singlePokemon(ulrSerchPokemon);
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setSerch(e.target.value);
+    setData([]);
   };
 
   return (
@@ -30,29 +48,44 @@ function App() {
           Buscar
         </button>
       </form>
-      <div className=" w-11/12 ml-auto mr-auto mt-8 mb-4">
-        <Buttons
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          prevUrl={prevUrl}
-        />
-      </div>
-      <div className="w-11/12 ml-auto mr-auto pt-2  pb-10  grid gap-4 justify-items-center grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {loading ? (
-          <Loader />
-        ) : (
-          pokemons.map(({ id, name, type, image, abilities }) => (
-            <Pokemon
-              key={id}
-              id={id}
-              name={name}
-              type={type}
-              image={image}
-              abilities={abilities}
+      {serch === "" ? (
+        <div>
+          <div className=" w-11/12 ml-auto mr-auto mt-8 mb-4">
+            <Buttons
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              prevUrl={prevUrl}
             />
-          ))
-        )}
-      </div>
+          </div>
+          <div className="w-11/12 ml-auto mr-auto pt-2  pb-10  grid gap-4 justify-items-center grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {loading ? (
+              <Loader />
+            ) : (
+              pokemons.map(({ id, name, type, image, stats }) => (
+                <Pokemon
+                  key={id}
+                  id={id}
+                  name={name}
+                  type={type}
+                  image={image}
+                  stats={stats}
+                />
+              ))
+            )}
+          </div>
+        </div>
+      ) : (
+        data.map(({ id, name, type, image, stats }) => (
+          <Pokemon
+            key={id}
+            id={id}
+            name={name}
+            type={type}
+            image={image}
+            stats={stats}
+          />
+        ))
+      )}
     </div>
   );
 }

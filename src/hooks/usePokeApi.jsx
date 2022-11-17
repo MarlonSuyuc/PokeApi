@@ -7,7 +7,6 @@ export const usePokeApi = () => {
   const [loading, setLoading] = useState(false);
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [serch, setSerch] = useState("");
 
   const handleNext = () => {
     setPokemons([]);
@@ -39,7 +38,7 @@ export const usePokeApi = () => {
         name: pokemon.name,
         image: pokemon.sprites.other.dream_world.front_default,
         type: pokemon.types[0].type.name,
-        abilities: pokemon.abilities,
+        stats: pokemon.stats,
       };
 
       setPokemons(function infoPokemon(pokemons) {
