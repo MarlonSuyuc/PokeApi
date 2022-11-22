@@ -6,7 +6,7 @@ import { usePokeApi } from "./hooks/usePokeApi";
 
 function App() {
   let { prevUrl, pokemons, loading, handleNext, handlePrev } = usePokeApi();
-  const [serch, setSerch] = useState("");
+  const [serch, setSerch] = useState(null);
   const [data, setData] = useState([]);
 
   const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ function App() {
   };
 
   const handleChange = (e) => {
-    setSerch(e.target.value);
+    setSerch(e.target.value.toLowerCase());
     setData([]);
   };
 
@@ -48,7 +48,7 @@ function App() {
           Buscar
         </button>
       </form>
-      {serch === "" ? (
+      {serch === null ? (
         <div>
           <div className=" w-11/12 ml-auto mr-auto mt-8 mb-4">
             <Buttons

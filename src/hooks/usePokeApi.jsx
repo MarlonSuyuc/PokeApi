@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 let incialUrl = `https://pokeapi.co/api/v2/pokemon/`;
+// Otra forma de acceder a las paginas de los pokemones es con el siguiente link
+// https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20 y en donde esta cero ("0"&limit=20) podemos cambiar el valor a travez de una variable de estado por ejemplo const [page, setPage] = useState(0) y lo inicializamos en cero
+
 export const usePokeApi = () => {
   const [url, setUrl] = useState(incialUrl);
   const [pokemons, setPokemons] = useState([]);
