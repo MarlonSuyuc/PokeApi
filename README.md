@@ -1,5 +1,6 @@
 # PokeApi
-
+Consumiendo la API de Pokeapi se diseñó una pokedex.
+#### Puedes navegar entre páginas y buscar un pokemon en especifico
 ### Proyecto realizado con las siguientes tecnologías:
 - React js
 - Tailwind css
