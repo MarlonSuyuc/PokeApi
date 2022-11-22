@@ -8,3 +8,5 @@ Consumiendo la API de Pokeapi se diseñó una pokedex.
 - Deploy en [vercel](https://vercel.com/)
 
 #### Visita mi proyecto [poké api](https://poke-api-gt.vercel.app/)
+
+![visual studio Code logo](./src/assets/captura.png)
